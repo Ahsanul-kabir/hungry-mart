@@ -1,0 +1,22 @@
+[{
+        "id": 1,
+        "name": "Hot Burger",
+        "price": "135",
+        "description": "This is soft hot burger",
+        "img": "https://i.ibb.co/4Kt4zSt/front-view-burgers-stand.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Grill Chicken",
+        "price": "300",
+        "description": "This famous Grill Chicken",
+        "img": "https://i.ibb.co/1dPs3Qc/banner-1.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Crime Cake",
+        "price": "200",
+        "description": "This is famous Cake ever",
+        "img": "https://i.ibb.co/tPZtFjX/banner-2.jpg"
+    }
+]

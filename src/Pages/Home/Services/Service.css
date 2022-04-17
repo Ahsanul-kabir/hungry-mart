@@ -1,0 +1,10 @@
+.service-title{
+    color:rgb(102,102,102);
+    font-size: 30px;
+    letter-spacing: 2px;
+    line-height: 24px;
+    margin: 0;
+    position: relative;
+    text-transform: uppercase;
+    padding-bottom: 13px;
+}

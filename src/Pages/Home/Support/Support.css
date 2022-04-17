@@ -1,0 +1,37 @@
+.support-container img{
+    height: 110px;
+    width: 110px;
+}
+
+.support-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#F8F8F8;
+    height: 60vh;
+    padding: 10%
+}
+
+.support-container h2{
+    color: rgb(127,102,102);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.support-container p{
+    color: rgb(127,102,102);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* .support-container a{
+    background: #f0582f none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    padding: 9px 18px;
+    text-transform: uppercase;
+} */

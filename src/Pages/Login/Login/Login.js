@@ -1,9 +1,13 @@
+import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../../Shared/Loading/Loading';
 
 const Login = () => {
     const [
@@ -12,6 +16,8 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -33,6 +39,18 @@ const Login = () => {
         signInWithEmailAndPassword(email, password)
     }
 
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else {
+            toast('please enter your email address');
+        }
+    }
+
     const navigateRegister = () => {
         navigate(`/register`);
     }
@@ -40,6 +58,10 @@ const Login = () => {
 
     if (error) {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
+    }
+
+    if (loading || sending) {
+        return <Loading />
     }
 
     return (
@@ -56,14 +78,16 @@ const Login = () => {
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="info" type="submit" className='text-white fw-bold'>
+                <Button variant="info" type="submit" className='text-white fw-bold w-50 mx-auto d-block mb-2'>
                     Login
                 </Button>
             </Form>
             {errorElement}
             <p>New User? <Link to='/register' className='text-primary pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link></p>
+            <p>Forget Password? <Link to="/register" className='text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</Link> </p>
 
             <SocialLogin />
+            <ToastContainer />
         </div >
     );
 };

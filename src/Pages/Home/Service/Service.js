@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({ food }) => {
-    const { name, price, description, img } = food;
+    const { id, name, price, description, img } = food;
+
+    const navigate = useNavigate()
+
+    const navigateToServiceDetail = () => {
+        navigate(`/checkout/${id}`)
+    }
+
     return (
         <div className="card col-sm-12 col-sm-6 col-sm-4 m-2 shadow p-3 mb-5 bg-body rounded" style={{ width: "22rem" }}>
             <img src={img} className="card-img-top rounded" alt="..." />
@@ -9,7 +17,7 @@ const Service = ({ food }) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{price}</p>
                 <p className="card-text">{description}</p>
-                <button to="/" className="btn btn-info text-white">Take Now</button>
+                <button onClick={() => navigateToServiceDetail(id)} className="btn btn-info text-white">Take Now</button>
             </div>
         </div>
     );
